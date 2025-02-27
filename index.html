@@ -12,31 +12,31 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .left {
-            width: 50%;
             background: url('Yoga.jpg') no-repeat center center;
             background-size: cover;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        .logo {
-            width: 60%;
-            max-width: 300px;
-        }
-        .right {
-            width: 50%;
-            background: #004752;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100vh;
             flex-direction: column;
             text-align: center;
-            color: white;
+            position: relative;
+        }
+        .logo-container {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            padding: 10px;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 260px;
+            height: 80px;
+        }
+        .logo {
+            width: 100%;
         }
         h1 {
             font-size: 2.5rem;
@@ -45,7 +45,7 @@
         .button {
             padding: 15px 30px;
             background-color: white;
-            color: #004752;
+            color: #0E4B5A;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
@@ -64,26 +64,25 @@
             align-items: center;
         }
         .popup-content {
-            background: #004752;
-            padding: 30px;
+            background: #0E4B5A;
+            padding: 40px;
             text-align: center;
             border-radius: 10px;
-            width: 350px;
+            width: 450px;
+            max-width: 90%;
             position: relative;
-            color: white;
-            font-family: 'Poppins', sans-serif;
         }
         .close {
             position: absolute;
             top: 15px;
             right: 20px;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
         }
         input {
-            width: 80%;
-            padding: 12px;
+            width: 85%;
+            padding: 14px;
             margin: 15px 0;
             border: none;
             border-radius: 5px;
@@ -94,17 +93,16 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <div class="left">
+    <div class="logo-container">
         <img src="logo.png" alt="WellPath Prime" class="logo">
     </div>
-    <div class="right">
-        <h1>GREAT THINGS ARE COMING</h1>
-        <button class="button" onclick="showPopup()">Learn More</button>
-    </div>
+    <h1>GREAT THINGS ARE COMING</h1>
+    <button class="button" onclick="showPopup()">Learn More</button>
 
     <div class="popup" id="popup">
         <div class="popup-content">
