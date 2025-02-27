@@ -12,49 +12,36 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .left {
-            width: 50%;
             background: url('Yoga.jpg') no-repeat center center;
             background-size: cover;
-            position: relative;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        .logo-container {
-            border: 2px solid white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
         }
         .logo {
+            position: absolute;
+            top: 10%;
+            left: 10%;
             width: 250px;
-        }
-        .right {
-            width: 50%;
-            background-color: #004752;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
         }
         h1 {
             font-size: 2.5rem;
+            font-weight: 200;
             margin-bottom: 20px;
         }
         .button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             background-color: white;
             color: #0E4B5A;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             border-radius: 5px;
@@ -75,9 +62,18 @@
             padding: 40px;
             text-align: center;
             border-radius: 10px;
-            width: 500px;
+            width: 450px;
             position: relative;
-            color: white;
+        }
+        .popup-content h2 {
+            font-size: 2rem;
+        }
+        .popup-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .popup-content p strong {
+            font-weight: 700;
         }
         .close {
             position: absolute;
@@ -87,51 +83,37 @@
             font-size: 24px;
             cursor: pointer;
         }
-        input {
-            width: 90%;
+        input[type="email"] {
+            width: 100%;
             padding: 12px;
             margin: 15px 0;
-            border: none;
+            border: 1px solid white;
             border-radius: 5px;
             font-size: 1rem;
-        }
-        button {
-            width: 90%;
-            padding: 15px;
-            font-size: 1rem;
-            background-color: white;
-            color: #0E4B5A;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background: #333;
+            color: white;
         }
         label {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="left">
-        <div class="logo-container">
-            <img src="logo.png" alt="WellPath Prime" class="logo">
-        </div>
-    </div>
-    <div class="right">
-        <h1>GREAT THINGS ARE COMING</h1>
-        <button class="button" onclick="showPopup()">Learn More</button>
-    </div>
+    <img src="logo.png" alt="WellPath Prime" class="logo">
+    <h1>GREAT THINGS ARE COMING</h1>
+    <button class="button" onclick="showPopup()">Learn More</button>
 
     <div class="popup" id="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>MEET WELLPATH PRIME</h2>
-            <p>We’re building the first longevity solution designed exclusively for Concierge & DPC Physicians.</p>
+            <p>We’re building the first longevity solution designed exclusively for <strong>Concierge & DPC Physicians</strong>.</p>
             <form name="contact" method="POST" data-netlify="true">
                 <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit">Notify Me</button>
+                <button type="submit" class="button">Notify Me</button>
             </form>
             <label>
                 <input type="checkbox" name="newsletter"> Yes, subscribe me to the newsletter
@@ -149,3 +131,4 @@
     </script>
 </body>
 </html>
+
