@@ -13,39 +13,38 @@
         body {
             font-family: 'Poppins', sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            background: linear-gradient(to right, url('Yoga.jpg') 50%, #004752 50%);
         }
-        .container {
+        .left {
+            width: 50%;
+            background: url('Yoga.jpg') no-repeat center center;
+            background-size: cover;
             display: flex;
-            width: 80%;
-            max-width: 1200px;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .left, .right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        .right {
+            width: 50%;
+            background-color: #004752;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
         }
         .logo {
             width: 250px;
-            background: white;
+            background: rgba(255, 255, 255, 0.3);
             padding: 10px;
             border-radius: 5px;
         }
-        .message {
-            text-align: center;
-            color: white;
-            font-size: 2rem;
+        h1 {
+            font-size: 2.5rem;
             font-weight: 200;
+            margin-bottom: 20px;
         }
         .button {
-            margin-top: 15px;
             padding: 10px 20px;
             background-color: white;
             color: #004752;
@@ -71,36 +70,12 @@
             padding: 40px;
             text-align: center;
             border-radius: 10px;
-            width: 400px;
+            width: 450px;
             position: relative;
-        }
-        .popup h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-        .popup p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-        .popup input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid white;
-            background: #333;
             color: white;
-            border-radius: 5px;
         }
-        .popup button {
-            width: auto;
-            padding: 10px 20px;
-        }
-        .popup label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 10px;
+        .popup-content h2 {
+            font-weight: normal;
         }
         .close {
             position: absolute;
@@ -110,34 +85,45 @@
             font-size: 24px;
             cursor: pointer;
         }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid white;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #333;
+            color: white;
+        }
+        .button-container {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left">
-            <img src="logo.png" alt="WellPath Prime" class="logo">
-        </div>
-        <div class="right">
-            <h1 class="message">GREAT THINGS ARE COMING</h1>
-            <button class="button" onclick="showPopup()">Learn More</button>
-        </div>
+    <div class="left">
+        <img src="logo.png" alt="WellPath Prime" class="logo">
     </div>
-
+    <div class="right">
+        <h1>GREAT THINGS ARE COMING</h1>
+        <button class="button" onclick="showPopup()">Learn More</button>
+    </div>
     <div class="popup" id="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>MEET WELLPATH PRIME</h2>
-            <p>We’re building the first longevity solution designed exclusively for <strong>Concierge & DPC Physicians</strong>.</p>
+            <p>We’re building the first longevity solution designed exclusively for <b>Concierge & DPC Physicians</b>.</p>
             <form name="contact" method="POST" data-netlify="true">
                 <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="button">Notify Me</button>
+                <div class="button-container">
+                    <button type="submit" class="button">Notify Me</button>
+                </div>
             </form>
             <label>
                 <input type="checkbox" name="newsletter"> Yes, subscribe me to the newsletter
             </label>
         </div>
     </div>
-
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "flex";
