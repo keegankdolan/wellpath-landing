@@ -12,34 +12,43 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('Yoga.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(to right, url('Yoga.jpg') 50%, #004752 50%);
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .left, .right {
+            flex: 1;
+            display: flex;
             flex-direction: column;
-            text-align: center;
+            justify-content: center;
+            align-items: center;
         }
         .logo {
-            position: absolute;
-            top: 10%;
-            left: 10%;
             width: 250px;
+            background: white;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
+            border-radius: 5px;
         }
-        h1 {
-            font-size: 2.5rem;
+        .message {
+            text-align: center;
+            color: white;
+            font-size: 2rem;
             font-weight: 200;
-            margin-bottom: 20px;
         }
         .button {
+            margin-top: 15px;
             padding: 10px 20px;
             background-color: white;
-            color: #0E4B5A;
+            color: #004752;
             border: none;
             font-size: 1rem;
             cursor: pointer;
@@ -58,22 +67,40 @@
             align-items: center;
         }
         .popup-content {
-            background: #0E4B5A;
+            background: #004752;
             padding: 40px;
             text-align: center;
             border-radius: 10px;
-            width: 450px;
+            width: 400px;
             position: relative;
         }
-        .popup-content h2 {
-            font-size: 2rem;
+        .popup h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
         }
-        .popup-content p {
+        .popup p {
             font-size: 1rem;
             margin-bottom: 20px;
         }
-        .popup-content p strong {
-            font-weight: 700;
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid white;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+        }
+        .popup button {
+            width: auto;
+            padding: 10px 20px;
+        }
+        .popup label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
         }
         .close {
             position: absolute;
@@ -83,28 +110,18 @@
             font-size: 24px;
             cursor: pointer;
         }
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin: 15px 0;
-            border: 1px solid white;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: #333;
-            color: white;
-        }
-        label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="WellPath Prime" class="logo">
-    <h1>GREAT THINGS ARE COMING</h1>
-    <button class="button" onclick="showPopup()">Learn More</button>
+    <div class="container">
+        <div class="left">
+            <img src="logo.png" alt="WellPath Prime" class="logo">
+        </div>
+        <div class="right">
+            <h1 class="message">GREAT THINGS ARE COMING</h1>
+            <button class="button" onclick="showPopup()">Learn More</button>
+        </div>
+    </div>
 
     <div class="popup" id="popup">
         <div class="popup-content">
@@ -131,4 +148,3 @@
     </script>
 </body>
 </html>
-
