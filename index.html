@@ -12,37 +12,22 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            height: 100vh;
-        }
-        .left {
-            width: 50%;
-            background: url('Yoga.jpg') no-repeat center center;
+            background: linear-gradient(to right, url('Yoga.jpg') 50%, #004752 50%);
             background-size: cover;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-        }
-        .right {
-            width: 50%;
-            background-color: #004752;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100vh;
             flex-direction: column;
             text-align: center;
-            color: white;
         }
         .logo {
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 25%;
             transform: translate(-50%, -50%);
             width: 250px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
         }
         h1 {
             font-size: 2.5rem;
@@ -50,7 +35,7 @@
             margin-bottom: 20px;
         }
         .button {
-            padding: 12px 24px;
+            padding: 15px 30px;
             background-color: white;
             color: #0E4B5A;
             border: none;
@@ -58,6 +43,7 @@
             cursor: pointer;
             text-decoration: none;
             border-radius: 5px;
+            width: auto;
         }
         .popup {
             display: none;
@@ -75,8 +61,9 @@
             padding: 40px;
             text-align: center;
             border-radius: 10px;
-            width: 400px;
+            width: 450px;
             position: relative;
+            color: white;
         }
         .close {
             position: absolute;
@@ -87,58 +74,53 @@
             cursor: pointer;
         }
         input {
-            width: 100%;
+            width: 90%;
             padding: 12px;
-            margin: 15px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: #333;
-            color: white;
+            margin: 20px 0;
             border: 1px solid white;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .popup button {
-            padding: 12px 20px;
-            font-size: 1rem;
-            border: none;
+            background: #222;
             border-radius: 5px;
-            background: white;
-            color: #0E4B5A;
-            cursor: pointer;
+            font-size: 1rem;
+            color: white;
         }
         label {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 10px;
             margin-top: 15px;
+        }
+        label input {
+            width: auto;
+            margin: 0;
+        }
+        .popup-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        .popup-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .popup-content .bold {
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <div class="left">
-        <img src="logo.png" alt="WellPath Prime" class="logo">
-    </div>
-    <div class="right">
-        <h1>GREAT THINGS ARE COMING</h1>
-        <button class="button" onclick="showPopup()">Learn More</button>
-    </div>
-    
+    <img src="logo.png" alt="WellPath Prime" class="logo">
+    <h1>GREAT THINGS ARE COMING</h1>
+    <button class="button" onclick="showPopup()">Learn More</button>
+
     <div class="popup" id="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup()">&times;</span>
-            <h2 style="font-weight: normal;">MEET WELLPATH PRIME</h2>
-            <p>We’re building the first longevity solution designed exclusively for <strong>Concierge & DPC Physicians</strong>.</p>
-            <form id="contactForm">
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                <div class="button-container">
-                    <button type="submit">Notify Me</button>
-                </div>
+            <h2>MEET WELLPATH PRIME</h2>
+            <p>We’re building the first longevity solution designed exclusively for <span class="bold">Concierge & DPC Physicians.</span></p>
+            <form id="notifyForm">
+                <input type="email" id="emailInput" placeholder="Enter your email" required>
+                <button type="submit" class="button">Notify Me</button>
                 <label>
                     <input type="checkbox" name="newsletter"> Yes, subscribe me to the newsletter
                 </label>
@@ -153,22 +135,17 @@
         function closePopup() {
             document.getElementById("popup").style.display = "none";
         }
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
+        document.getElementById("notifyForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            let email = document.getElementById("email").value;
-            
-            fetch("https://formsubmit.co/keegan.dolan@wellpathprime.com", {
+            const email = document.getElementById("emailInput").value;
+            fetch("https://formspree.io/f/your-form-id", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: email })
             }).then(response => {
-                if (response.ok) {
-                    alert("Thank you for signing up!");
-                    closePopup();
-                } else {
-                    alert("Something went wrong. Please try again.");
-                }
-            });
+                alert("Thank you! We'll be in touch.");
+                closePopup();
+            }).catch(error => console.error("Error:", error));
         });
     </script>
 </body>
