@@ -12,32 +12,25 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            height: 100vh;
-        }
-        .left {
-            width: 50%;
-            background: url('Yoga.jpg') no-repeat center center;
+            background: linear-gradient(to right, url('Yoga.jpg') 50%, #004752 50%);
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .right {
-            width: 50%;
-            background-color: #004752;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
             text-align: center;
         }
         .logo {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
             width: 250px;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 10px;
-            border-radius: 5px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
         }
         h1 {
             font-size: 2.5rem;
@@ -45,11 +38,11 @@
             margin-bottom: 20px;
         }
         .button {
-            padding: 10px 20px;
+            padding: 15px 30px;
             background-color: white;
-            color: #004752;
+            color: #0E4B5A;
             border: none;
-            font-size: 1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             text-decoration: none;
             border-radius: 5px;
@@ -66,16 +59,12 @@
             align-items: center;
         }
         .popup-content {
-            background: #004752;
+            background: #0E4B5A;
             padding: 40px;
             text-align: center;
             border-radius: 10px;
             width: 450px;
             position: relative;
-            color: white;
-        }
-        .popup-content h2 {
-            font-weight: normal;
         }
         .close {
             position: absolute;
@@ -86,44 +75,55 @@
             cursor: pointer;
         }
         input {
-            width: 90%;
+            width: 80%;
             padding: 12px;
             margin: 15px 0;
-            border: 1px solid white;
+            border: none;
             border-radius: 5px;
             font-size: 1rem;
             background: #333;
             color: white;
+            border: 1px solid white;
         }
-        .button-container {
+        .popup h2 {
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             margin-top: 10px;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="left">
-        <img src="logo.png" alt="WellPath Prime" class="logo">
-    </div>
-    <div class="right">
-        <h1>GREAT THINGS ARE COMING</h1>
-        <button class="button" onclick="showPopup()">Learn More</button>
-    </div>
+    <img src="logo.png" alt="WellPath Prime" class="logo">
+    <h1>GREAT THINGS ARE COMING</h1>
+    <button class="button" onclick="showPopup()">Learn More</button>
+
     <div class="popup" id="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>MEET WELLPATH PRIME</h2>
-            <p>We’re building the first longevity solution designed exclusively for <b>Concierge & DPC Physicians</b>.</p>
+            <p>We’re building the first longevity solution designed exclusively for <strong>Concierge & DPC Physicians</strong>.</p>
             <form name="contact" method="POST" data-netlify="true">
                 <input type="email" name="email" placeholder="Enter your email" required>
-                <div class="button-container">
-                    <button type="submit" class="button">Notify Me</button>
-                </div>
+                <button type="submit" class="button">Notify Me</button>
             </form>
-            <label>
-                <input type="checkbox" name="newsletter"> Yes, subscribe me to the newsletter
-            </label>
+            <div class="checkbox-container">
+                <input type="checkbox" name="newsletter"> <span>Yes, subscribe me to the newsletter</span>
+            </div>
         </div>
     </div>
+
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "flex";
